@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>NEON DAYS | ファッションブランド</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+</head>
+<!-- 右下カートボタン -->
+<a href="cart.html" class="cart-button">
+  🛒 カート <span id="cart-count">0</span>
+</a>
+
+<body>
+
+  <header>
+    <h1>NEON DAYS</h1>
+<nav>
+  <a href="index.html">ホーム</a>
+  <a href="#products">商品一覧</a>
+  <a href="#contact">お問い合わせ</a>
+</nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <h2>シンプル × ストリートの新定番</h2>
+      <p>10代・20代のためのユニセックスブランド</p>
+    </section>
+
+    <section id="products" class="products">
+      <h3>商品一覧</h3>
+     <div class="product">
+  <img src="sweat.jpg" alt="オーバーサイズスウェット">
+  <h4>オーバーサイズスウェット</h4>
+  <p>￥4,980（税込）</p>
+  <label>数量:
+    <select id="qty-sweat">
+      <option value="1">1</option>
+      <option value="2">2</option>
+      <option value="3">3</option>
+      <option value="4">4</option>
+      <option value="5">5</option>
+    </select>
+  </label>
+  <button onclick="addToCart('オーバーサイズスウェット', 4980, 'qty-sweat')">カートに追加</button>
+</div>
+      <!-- 2つ目以降の商品も同様にここへ追加 -->
+    </section>
+
+    <section id="contact" class="contact">
+      <h3>お問い合わせ</h3>
+      <p>InstagramのDMからご連絡ください：@neondays</p>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 NEON DAYS</p>
+  </footer>
+
+  <script src="main.js"></script>
+</body>
+</html>

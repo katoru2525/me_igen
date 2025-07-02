@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>カート - NEON DAYS</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>NEON DAYS - カート</h1>
+    <nav>
+      <a href="index.html">商品一覧に戻る</a>
+    </nav>
+  </header>
+
+  <main class="cart">
+ <main class="cart">
+  <h2>カートの中身</h2>
+  <table>
+    <thead>
+      <tr><th>商品</th><th>単価</th><th>数量</th><th>小計</th><th></th></tr>
+    </thead>
+    <tbody id="cartItems"></tbody>
+  </table>
+  <p id="total"></p>
+  <form action="https://checkout.stripe.com/pay/YOUR_LINK" method="GET">
+    <button type="submit">購入手続きへ</button>
+  </form>
+</main>
+ <script>
+  let cart = JSON.parse(localStorage.getItem("cart")) || [];
+  const cartItems = document.getElementById("cartItems");
+  const totalDisplay = document.getElementById("total");
+
+  function updateCartDisplay() {
+    cartItems.innerHTML = "";
+    let total = 0;
+
+    cart.forEach((item, index) => {
+      const li = document.createElement("li");
+
+      li.innerHTML = `
+        ${item.item} - ¥${item.price} × ${item.quantity || 1}
+        <button onclick="changeQuantity(${index}, -1)">−</button>
+        <button onclick="changeQuantity(${index}, 1)">＋</button>
+      `;
+
+      total += item.price * (item.quantity || 1);
+      cartItems.appendChild(li);
+    });
+
+    totalDisplay.textContent = `合計金額: ¥${total}`;
+    localStorage.setItem("cart", JSON.stringify(cart));
+  }
+
+  function changeQuantity(index, change) {
+    if (!cart[index].quantity) cart[index].quantity = 1;
+    cart[index].quantity += change;
+
+    if (cart[index].quantity <= 0) {
+      cart.splice(index, 1); // 数量が0以下ならカートから削除
+    }
+
+    updateCartDisplay();
+  }
+
+  // 初期表示
+  updateCartDisplay();
+</script>
+</body>
+</html>
