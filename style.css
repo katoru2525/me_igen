@@ -144,4 +144,26 @@ table {
   overflow-x: auto;
   white-space: nowrap;
 }
+body, html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  background-color: #f8f8f8; /* 背景色は自由に変更してOK */
+}
 
+.logo-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  padding: 20px; /* スマホ画面ではみ出さないように余白を確保 */
+  box-sizing: border-box;
+}
+
+.logo-container img {
+  max-width: 100%;
+  max-height: 90vh;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+}
